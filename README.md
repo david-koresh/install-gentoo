@@ -17,6 +17,7 @@ as the installer will then be able to automatically download required programs o
 proceed with the following steps:
 
 1. Either clone this repo or download and extract a copy
+curl -LJO https://github.com/david-koresh/install-gentoo/archive/refs/heads/master.zip
 1. Run `./configure` and save your desired configuration
 1. Begin installation using `./install`
 
