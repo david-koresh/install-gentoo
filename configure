@@ -352,16 +352,16 @@ function load_default_config() {
 
 	function disk_configuration() {
 		#create_zfs_centric_layout swap=8GiB type=efi encrypt=true compress=zstd pool_type=standard /dev/sdX
-		create_classic_single_disk_layout swap=8GiB type=efi luks=true root_fs=ext4 /dev/sdX
+		create_classic_single_disk_layout swap=8GiB type=efi luks=false root_fs=ext4 /dev/sdX
 	}
 
-	SYSTEMD=true
+	SYSTEMD=false
 
 	PORTAGE_SYNC_TYPE="git"
 	PORTAGE_GIT_FULL_HISTORY=false
 	PORTAGE_GIT_MIRROR="https://anongit.gentoo.org/git/repo/sync/gentoo.git"
 
-	GENTOO_MIRROR="https://mirror.eu.oneandone.net/linux/distributions/gentoo/gentoo"
+	GENTOO_MIRROR="https://gentoo.osuosl.org/"
 	GENTOO_ARCH="amd64"
 
 	SELECT_MIRRORS=true
