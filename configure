@@ -368,6 +368,8 @@ function load_default_config() {
 	SELECT_MIRRORS_LARGE_FILE=false
 
 	ADDITIONAL_PACKAGES=()
+    GLOBAL_USE_FLAGS=()
+    PORTAGE_FEATURES=()
 	INSTALL_SSHD=true
 	ROOT_SSH_AUTHORIZED_KEYS=""
 
@@ -767,6 +769,9 @@ MENU_ITEMS=(
 	"INSTALL_SSHD"
 	"ROOT_SSH_AUTHORIZED_KEYS"
 	"ADDITIONAL_PACKAGES"
+	"--------"
+    "GLOBAL_USE_FLAGS"
+    "PORTAGE_FEATURES"
 )
 
 function --------_tag()   { echo "────────────────────────────"; }
@@ -1290,6 +1295,32 @@ function ADDITIONAL_PACKAGES_menu()  {
 	ADDITIONAL_PACKAGES=($dialog_out)
 	UNSAVED_CHANGES=true
 }
+### New Functions I've added
+function PORTAGE_FEATURES_tag()   { echo "Portage Features"; }
+function PORTAGE_FEATURES_label()   { echo "${#PORTAGE_FEATURES[@]} flags"; }
+function PORTAGE_FEATURES_show()   { return 0; }
+function PORTAGE_FEATURES_menu()  {
+	dialog \
+		--title "Portage Features" \
+		--inputbox "Adds Portage features to your make.conf" \
+		"${INPUTBOX_SIZE[@]}" "${PORTAGE_FEATURES[*]}"
+	# shellcheck disable=SC2206
+    PORTAGE_FEATURES=($dialog_out)
+	UNSAVED_CHANGES=true
+}
+function GLOBAL_USE_FLAGS_tag()   { echo "Global USE Flags"; }
+function GLOBAL_USE_FLAGS_label()   { echo "${#GLOBAL_USE_FLAGS[@]} flags"; }
+function GLOBAL_USE_FLAGS_show()   { return 0; }
+function GLOBAL_USE_FLAGS_menu()  {
+	dialog \
+		--title "Global Use Flags" \
+		--inputbox "Enter Global USE flags you want to use in your system" \
+		"${INPUTBOX_SIZE[@]}" "${GLOBAL_USE_FLAGS[*]}"
+	# shellcheck disable=SC2206
+    GLOBAL_USE_FLAGS=($dialog_out)
+	UNSAVED_CHANGES=true
+}
+
 
 
 ################################################

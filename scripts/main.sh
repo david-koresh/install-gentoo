@@ -88,8 +88,15 @@ function configure_portage() {
 		try mirrorselect "${mirrorselect_params[@]}"
 
 		einfo "Adding ~$GENTOO_ARCH to ACCEPT_KEYWORDS"
+		einfo "Adding ~$GLOBAL_USE_FLAGS to USE"
+		einfo "Adding ~$PORTAGE_FEATURES to USE"
+        sed -i 's/COMMON_FLAGS=\"-O2 -pipe\"/COMMON_FLAGS=\"-march=native -O2 -pipe\"/g' /etc/portage/make.conf
 		echo "ACCEPT_KEYWORDS=\"~$GENTOO_ARCH\"" >> /etc/portage/make.conf \
-			|| die "Could not modify /etc/portage/make.conf"
+			|| die "Could not add ACCEPT_KEYWORDS /etc/portage/make.conf"
+		echo "USE=\"$GLOBAL_USE_FLAGS\"" >> /etc/portage/make.conf \
+			|| die "Could not add GLOBAL_USE_FLAGS to /etc/portage/make.conf"
+		echo "PORTAGE_FEATURES=\"$PORTAGE_FEATURES\"" >> /etc/portage/make.conf \
+			|| die "Could not add PORTAGE_FEATURES to /etc/portage/make.conf"
 	fi
 }
 
