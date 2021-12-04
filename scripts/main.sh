@@ -250,6 +250,22 @@ function install_kernel() {
 	fi
 }
 
+function custom_kernel() {
+    #install a custom kernel
+	einfo "Installing custom kernel and related tools"
+	try emerge --verbose sys-kernel/linux-firmware =sys-kernel/gentoo-sources-5.15.5
+	cp /install-gentoo-master/kernel/gentoominimal /usr/src/linux/.config
+	if [[ $IS_EFI == "true" ]]; then
+		install_kernel_efi
+	else
+		install_kernel_bios
+	fi
+	#make && make modules_install
+	#make install
+	#printf "Kernel installed\n"
+}
+
+
 function add_fstab_entry() {
 	printf '%-46s  %-24s  %-6s  %-96s %s\n' "$1" "$2" "$3" "$4" "$5" >> /etc/fstab \
 		|| die "Could not append entry to fstab"

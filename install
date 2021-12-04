@@ -1,4 +1,8 @@
 #!/bin/bash
+#TODO sometimes this error occurs when creating partition (part_efi)
+#problem opening /dev/sda ptuuid="xxx" partuuid=""
+#name="/dev/sda2 for reading! Error is 2
+#The specified file does not exist!
 set -uo pipefail
 
 
