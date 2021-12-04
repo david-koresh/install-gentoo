@@ -436,7 +436,6 @@ EOF
 	[[ $USED_LUKS == "true" ]] \
 		&& einfo "A backup of your luks headers can be found at '$LUKS_HEADER_BACKUP_DIR', in case you want to have a backup."
 	einfo "You may now reboot your system."
-}
 
 function main_install() {
 	[[ $# == 0 ]] || die "Too many arguments"
