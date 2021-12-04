@@ -380,7 +380,10 @@ EOF
 	fi
 
 	# Install kernel and initramfs
-	install_kernel
+    if [[ $BINARY_KERNEL == "true" ]]; then
+        install_kernel
+    else
+        custom_kernel
 
 	# Generate a valid fstab file
 	generate_fstab
